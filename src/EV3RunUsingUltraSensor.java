@@ -1,13 +1,16 @@
 import lejos.hardware.motor.Motor; //モーターの設定
 import lejos.hardware.port.SensorPort; //センサーポートの設定
 import lejos.hardware.sensor.EV3UltrasonicSensor; //超音波センサーの設定
+import lejos.utility.Delay;
 
 public class EV3RunUsingUltraSensor { //クラスの定義
 	public static void main(String[] args) { //main()
 		long timeMillisStart = System.currentTimeMillis(); //時間を[ms]で取得
 		float[] ut_value = new float[1]; //距離データ保存用
-		EV3UltrasonicSensor us1 = new EV3UltrasonicSensor(SensorPort.S3); //超音波センサーのインスタンスをポート3で生成
+		EV3UltrasonicSensor us1 = new EV3UltrasonicSensor(SensorPort.S2); //超音波センサーのインスタンスをポート3で生成
 		float distance = 10; //デフォルトの距離(近づく場合は適当に大きくしておく)
+		
+		Delay.msDelay(10000); //処理を遅らせる[ms]
 		
 		while(distance > 0.4){ //距離が0.4[m]より大きい間は実行する
    		Motor.B.setSpeed(100); //Default = 200
